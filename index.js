@@ -12,16 +12,26 @@ server.get("/holidays", (req, resp) => {
 
 server.get("/is-today-holiday", (req, resp) => {
     const hoje = new Date().toLocaleDateString("en-US")
-    let arr = []
-    holidays.map((holiday) => {
-        arr.push(holiday.date)
-    })
-    const encontrar = arr.includes(hoje)
-    if (encontrar === true) {
-        resp.send("sim , é feriado")
-    } else {
-        resp.send("não , não é feriado")
+    let feriado = "1/1/2022"
+    let holidayName = ""
+    let bolean = ""
+    for(let i = 0; i < holidays.length; i++){
+      console.log(holidays[i].date)
+      if(holidays[i].date == feriado ){
+         holidayName =holidays[i].name
+         bolean = true
+      }else{
+       bolean = false
+      }
+
+
+      if(bolean === true){
+       resp.send(`sim , hoje é ${holidayName}`)
+      }else{
+       resp.send("não , hoje não é um feriado")
+      }
     }
+    
 
 })
 
