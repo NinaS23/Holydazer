@@ -17,7 +17,7 @@ server.get("/is-today-holiday", (req, resp) => {
     let bolean = ""
     for(let i = 0; i < holidays.length; i++){
       console.log(holidays[i].date)
-      if(holidays[i].date == feriado ){
+      if(holidays[i].date == hoje ){
          holidayName =holidays[i].name
          bolean = true
       }else{
